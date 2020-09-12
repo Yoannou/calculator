@@ -1,0 +1,61 @@
+body {
+    font-size: 18px;
+    font-family: 'Orbitron', sans-serif;
+    background-color: black;
+}
+
+#container {
+    border: 2px solid wheat;
+    background-color: rgba(55, 55, 55, 0.5);
+    width: 350px;
+    height: 500px;
+    margin: 10% auto 20% auto;
+    padding: 0px 10px;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(200, 200, 200, 0.5);
+    border: 1px solid indianred;
+    border-radius: 25%;
+    margin: 30px 10px;
+    padding: 5% 10%;
+    color: rgba(63, 63, 63, 0.904);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+ #pointer {
+     color: red;
+     margin-right: 8px;
+
+ }
+
+#buttons {
+    display: grid;
+    margin: 0px 5px;
+    grid-template-areas:
+        "functional functional functional operations"
+        "number number number operations"
+        "number number number operations"
+        "number number number operations"
+        "number number number operations"
+    ;
+    gap: 5px 5px;
+    /*grid-template-rows: repeat(4, 25fr); --> May not need to specify number of rows*/
+    grid-template-columns: repeat(4, 25fr);
+}
+
+#buttons > * {
+    padding: 20px 20px;
+    border-radius: 5%;
+}
+
+#buttons > button:hover {
+    background-color: indianred;
+}
+
+#zero {
+    grid-column-start: span 2;
+}
