@@ -1,7 +1,9 @@
 body {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.8))), url(../img/felix-mittermeier-Knwea-mLGAg-unsplash.jpg);
+    background-size: cover;
+    background-color: black;
     font-size: 18px;
     font-family: 'Orbitron', sans-serif;
-    background-color: black;
 }
 
 #container {
@@ -29,7 +31,6 @@ body {
  #pointer {
      color: red;
      margin-right: 8px;
-
  }
 
 #buttons {
@@ -53,7 +54,11 @@ body {
 }
 
 #buttons > button:hover {
-    background-color: indianred;
+    background-color: rgb(205, 70, 70);
+}
+
+.operator, #equals {
+    background-color: rgb(205, 120, 120);
 }
 
 #zero {

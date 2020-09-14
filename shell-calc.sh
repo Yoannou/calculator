@@ -12,7 +12,7 @@ clear
 echo
 echo -------------------------------------------------------------------
 echo Welcome to Simple Calculator.
-echo Input operands and operators sequentially according to the prompts.
+echo inputting operands and operators sequentially according to the prompts.
 echo -------------------------------------------------------------------
 echo
 echo 'X' to exit
@@ -25,37 +25,37 @@ echo
 echo -------------------------------------------------------------------
 
 # Declaring key variables:
-operand1=0
+operand=0
 mem=0 
 
 # External while-loop needed for 'C' (clear) command:
 while [ true ]
 do
 
-	# Prompt user for the first operand: Loop required to ensure proper input before progressing.
+	# Prompt user for the first operand: Loop required to ensure proper inputting before progressing.
 	while [ true ]
 	do
 	echo -n "Enter operand: "
-	read operand1
+	read operand
 		
 		# If operand is a number, we move on to the operator:
-		if [[ "$operand1" =~ ^[0123456789.-]+$ ]]; then
+		if [[ "$operand" =~ ^[0123456789.-]+$ ]]; then
 			break
 		# If not, we test for the following conditions:
 		else
-			case $operand1 in
+			case $operand in
 			[x] | [X])
 				echo "Hasta la vista, baby!"
 				exit
 				;;
 			[c] | [C])
-				operand1=0
+				operand=0
 	                        echo "----------------"
 	                        echo "Results cleared."
 	                        echo "----------------"
 				;;
 			'MR')
-				operand1=$mem
+				operand=$mem
 				break
 				;;
 	                'MC')
@@ -67,7 +67,7 @@ do
 				echo "$operator1 stored in memory."
 				;;
 			*)
-				echo "Invalid input. Please enter a number."
+				echo "Invalid inputting. Please enter a number."
 				;;
 			esac
 		fi
@@ -91,9 +91,9 @@ do
 			echo -n "Enter operand: "
 			read operand2
 			        if [[ "$operand2" =~ ^[0123456789.-]+$ ]]; then
-					temp=$operand1
-		                	operand1=$(bc <<< $operand1+$operand2)
-					echo "$temp + $operand2 = $operand1"
+					temp=$operand
+		                	operand=$(bc <<< $operand+$operand2)
+					echo "$temp + $operand2 = $operand"
 		                break
 		# Checking other conditions:
 		        else
@@ -103,7 +103,7 @@ do
 		                        exit
 		                        ;;
 		                [c] | [C])
-		                        operand1=0
+		                        operand=0
 					echo "----------------"
 					echo "Results cleared."
 	                                echo "----------------"
@@ -114,13 +114,13 @@ do
 	                		echo "Memory cleared."
 	                		;;
 				'MR')
-					temp=$operand1
-					operand1=$(bc <<< $operand1+$mem)
-					echo "$temp + $mem = $operand1"
+					temp=$operand
+					operand=$(bc <<< $operand+$mem)
+					echo "$temp + $mem = $operand"
 					break
 					;;
 		                *)
-		                        echo "Invalid input. Please enter a number."
+		                        echo "Invalid inputting. Please enter a number."
 	        	                ;;
 	       	        	 esac
 				fi
@@ -133,9 +133,9 @@ do
 			echo -n "Enter operand: "
 			read operand2
 				if [[ "$operand2" =~ ^[0123456789.-]+$ ]]; then
-					temp=$operand1
-					operand1=$(bc <<< $operand1-"${operand2}")
-					echo "$temp - $operand2 = $operand1"
+					temp=$operand
+					operand=$(bc <<< $operand-"${operand2}")
+					echo "$temp - $operand2 = $operand"
 				break
 			# Checking other conditions:
 			else
@@ -145,7 +145,7 @@ do
 					exit
 					;;
 				[c] | [C])
-					operand1=0
+					operand=0
 	                                echo "----------------"
 					echo "Results cleared."
 	                                echo "----------------"
@@ -156,13 +156,13 @@ do
 	                		echo "Memory cleared."
 	                		;;
 	                        'MR')
-	                                temp=$operand1
-	                                operand1=$(bc <<< $operand1-$mem)
-	                                echo "$temp - $mem = $operand1"
+	                                temp=$operand
+	                                operand=$(bc <<< $operand-$mem)
+	                                echo "$temp - $mem = $operand"
 	                                break
 	                                ;;
 				*)
-					echo "Invalid input. Please enter a number."
+					echo "Invalid inputting. Please enter a number."
 					;;
 				esac
 				fi
@@ -175,9 +175,9 @@ do
 	                echo -n "Enter operand: "
 	                read operand2
 	                        if [[ "$operand2" =~ ^[0123456789.-]+$ ]]; then
-	                                temp=$operand1
-	                                operand1=$(bc <<< $operand1*$operand2)
-	                                echo "$temp * $operand2 = $operand1"
+	                                temp=$operand
+	                                operand=$(bc <<< $operand*$operand2)
+	                                echo "$temp * $operand2 = $operand"
 	                        break
 	                # Checking other conditions:
 	                else
@@ -187,7 +187,7 @@ do
 	                                exit
 	                                ;;
 	                        [c] | [C])
-	                                operand1=0
+	                                operand=0
 	                                echo "----------------"
 					echo "Results cleared."
 	                                echo "----------------"
@@ -198,13 +198,13 @@ do
 	                		echo "Memory cleared."
 	               	 		;;
 	                        'MR')
-	                                temp=$operand1
-	                                operand1=$(bc <<< $operand1*$mem)
-	                                echo "$temp * $mem = $operand1"
+	                                temp=$operand
+	                                operand=$(bc <<< $operand*$mem)
+	                                echo "$temp * $mem = $operand"
 	                                break
 	                                ;;
 	                        *)
-	                                echo "Invalid input. Please enter a number."
+	                                echo "Invalid inputting. Please enter a number."
 	                                ;;
 	                        esac
 	                        fi
@@ -219,9 +219,9 @@ do
 				if [ "$operand2" -eq 0 ]; then
 					echo "Cannot divide by zero. Please re-enter divisor."
 	                        elif [[ "$operand2" =~ ^[0123456789.-]+$ ]]; then
-	                                temp=$operand1
-	                                operand1=$(bc <<< $operand1/$operand2)
-	                                echo "$temp / $operand2 = $operand1"
+	                                temp=$operand
+	                                operand=$(bc <<< $operand/$operand2)
+	                                echo "$temp / $operand2 = $operand"
 	                        break
 	                # Checking other conditions:
 	                else
@@ -231,7 +231,7 @@ do
 	                                exit
 	                                ;;
 	                        [c] | [C])
-	                                operand1=0
+	                                operand=0
 	                                echo "----------------"
 					echo "Results cleared."
 	                                echo "----------------"
@@ -243,18 +243,18 @@ do
 					;;
 				# MR must still ensure that a value of 0 will be rejected:
 	                        'MR')
-	                                temp=$operand1
+	                                temp=$operand
 						if [ "$mem" = '0' ]; then
 							echo "Cannot divide by zero. Please re-enter divisor."
 							continue
 						else						
-	                                		operand1=$(bc <<< $operand1/$mem)
-	                                		echo "$temp / $mem = $operand1"
+	                                		operand=$(bc <<< $operand/$mem)
+	                                		echo "$temp / $mem = $operand"
 						fi
 	                                break
 	                                ;;
 	                        *)
-	                                echo "Invalid input. Please enter a number."
+	                                echo "Invalid inputting. Please enter a number."
 	                                ;;
 	                        esac
 	                        fi
@@ -271,20 +271,20 @@ do
 			exit
 			;;
 		[c] | [C])
-			operand1=0
+			operand=0
 	                echo "----------------"
 			echo "Results cleared."
 	                echo "----------------"
 			break
 			;;
 		'MS')
-			mem=$operand1
-			echo "$operand1 stored in memory."
+			mem=$operand
+			echo "$operand stored in memory."
 			;;
 		'M+')
 			temp=$mem
-			mem=$(bc <<< $operand1+$temp)
-			echo "$operand1 + $temp = $mem -- Sum stored in memory."
+			mem=$(bc <<< $operand+$temp)
+			echo "$operand + $temp = $mem -- Sum stored in memory."
 			;;
 		'MC')
 			mem=0
@@ -304,7 +304,7 @@ do
 			;;
 		*)
 			echo "------------------------------------------"
-			echo "Invalid input. Please enter an operator."
+			echo "Invalid inputting. Please enter an operator."
 			echo "Valid operators are: + - * / MS MR M+ MC C X"
 			echo "------------------------------------------"
 			;;
